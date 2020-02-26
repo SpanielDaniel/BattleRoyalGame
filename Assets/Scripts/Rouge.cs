@@ -4,37 +4,49 @@ using UnityEngine;
 
 public class Rouge : Player
 {
+    private int _number = DiceController.Number;
+
+
     public override bool[,] PossibleMove()
     {
+        
         bool[,] r = new bool[14, 20];
-        Player c, c2;
+        Player c;
 
-        //Diagonal Left
-        if(CurrentX != 0 && CurrentY != 7)
+        //Left
+        if(CurrentX != 0 && CurrentY != 19)
         {
-            c = BoardManager.Instance.Players[CurrentX - 1, CurrentY + 1];
-            if (c != null)
-            {
-                r[CurrentX - 1, CurrentY + 1] = true;
-            }
-        }
-
-        //Diagonal Right
-        if (CurrentX != 7 && CurrentY != 7)
-        {
-            c = BoardManager.Instance.Players[CurrentX + 1, CurrentY + 1];
-            if (c != null)
-            {
-                r[CurrentX + 1, CurrentY + 1] = true;
-            }
-        }
-
-        //Middle
-        if(CurrentY != 7)
-        {
-            c = BoardManager.Instance.Players[CurrentX, CurrentY + 1];
+            c = BoardManager.Instance.Players[CurrentX - _number, CurrentY];
             if (c == null)
-                r[CurrentX, CurrentY + 1] = true;
+            {
+                r[CurrentX - _number, CurrentY] = true;
+            }
+        }
+
+        //Right
+        if (CurrentX != 13 && CurrentY != 19)
+        {
+            c = BoardManager.Instance.Players[CurrentX +_number, CurrentY ];
+            if (c == null)
+            {
+                r[CurrentX + _number, CurrentY] = true;
+            }
+        }
+
+        //Up
+        if(CurrentY != 19)
+        {
+            c = BoardManager.Instance.Players[CurrentX, CurrentY + _number];
+            if (c == null)
+                r[CurrentX, CurrentY + _number] = true;
+        }
+
+        //Down
+        if (CurrentY != 0)
+        {
+            c = BoardManager.Instance.Players[CurrentX, CurrentY - _number];
+            if (c == null)
+                r[CurrentX, CurrentY - _number] = true;
         }
 
         return r;

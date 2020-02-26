@@ -131,4 +131,6 @@ public class BoardManager : MonoBehaviour
                 Vector3.forward * selectionY + Vector3.right * (selectionX + 1));
         }
     }
+
+
 }
