@@ -4,49 +4,75 @@ using UnityEngine;
 
 public class Rouge : Player
 {
-    private int _number = DiceController.Number;
+    private int _number;
 
 
     public override bool[,] PossibleMove()
     {
-        
+        _number = DiceController.Number;
+
         bool[,] r = new bool[14, 20];
         Player c;
 
         //Left
-        if(CurrentX != 0 && CurrentY != 19)
+        if(CurrentX-_number > 0)
         {
-            c = BoardManager.Instance.Players[CurrentX - _number, CurrentY];
-            if (c == null)
+            for (int i = 1; i < _number + 1; i++)
             {
-                r[CurrentX - _number, CurrentY] = true;
+                if ((i + 1 * _number % 2) % 2 == 0)
+                {
+                    c = GameController.Instance.Players[CurrentX - i, CurrentY];
+                    if (c == null)
+                    {
+                        r[CurrentX - i, CurrentY] = true;
+                    }
+                }
             }
         }
 
         //Right
-        if (CurrentX != 13 && CurrentY != 19)
+        if (CurrentX +_number < 14 && CurrentY+_number < 20)
         {
-            c = BoardManager.Instance.Players[CurrentX +_number, CurrentY ];
-            if (c == null)
+            for (int i = 1; i < _number + 1; i++)
             {
-                r[CurrentX + _number, CurrentY] = true;
+                if ((i + 1 * _number % 2) % 2 == 0)
+                {
+                    c = GameController.Instance.Players[CurrentX +i, CurrentY ];
+                    if (c == null)
+                    {
+                        r[CurrentX + i, CurrentY] = true;
+                    }
+                }
             }
         }
+        
 
         //Up
-        if(CurrentY != 19)
+        if(CurrentY + _number < 20)
         {
-            c = BoardManager.Instance.Players[CurrentX, CurrentY + _number];
-            if (c == null)
-                r[CurrentX, CurrentY + _number] = true;
+            for (int i = 1; i < _number+1 ; i++)
+            {
+                if ((i+1*_number%2)%2==0)
+                {
+                    c = GameController.Instance.Players[CurrentX, CurrentY + i];
+                    if (c == null)
+                        r[CurrentX, CurrentY + i] = true;
+                }
+            }
         }
 
         //Down
         if (CurrentY != 0)
         {
-            c = BoardManager.Instance.Players[CurrentX, CurrentY - _number];
-            if (c == null)
-                r[CurrentX, CurrentY - _number] = true;
+            for (int i = 1; i < _number + 1; i++)
+            {
+                if ((i + 1 * _number % 2) % 2 == 0)
+                {
+                    c = GameController.Instance.Players[CurrentX, CurrentY - i];
+                    if (c == null)
+                        r[CurrentX, CurrentY - i] = true;
+                }
+            }
         }
 
         return r;

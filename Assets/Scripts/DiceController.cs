@@ -7,14 +7,19 @@ public class DiceController : MonoBehaviour
 {
     [SerializeField]
     private Button _diceButton;
+    private int _number;
+
+    public bool DiceActive = true;
 
     public static int Number { get; private set; }
 
     public void UseDice()
     {
-        Number = Random.Range(1, 6);
+            _number = Random.Range(1, 6);
+            Number = _number;
 
-        _diceButton.GetComponentInChildren<Text>().text = "Dice: "+Number;
-        _diceButton.interactable = false;
+            _diceButton.GetComponentInChildren<Text>().text = "Dice: " + _number;
+            _diceButton.interactable = false;
+
     }
 }

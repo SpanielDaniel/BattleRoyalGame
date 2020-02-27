@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoardManager : MonoBehaviour
+public class GameController : MonoBehaviour
 {
-    public static BoardManager Instance { get; set; }
+    public static GameController Instance { get; set; }
     private bool[,] allowedMoves { set; get; }
 
     private Player selectedPlayer;
@@ -64,6 +64,7 @@ public class BoardManager : MonoBehaviour
             Players[x, y] = selectedPlayer;
         }
 
+        MoveController.Instance.HideHighlights();
         selectedPlayer = null;
     }
 

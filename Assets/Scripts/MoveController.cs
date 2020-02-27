@@ -31,9 +31,9 @@ public class MoveController : MonoBehaviour
 
     public void HighLightAllowedMoves(bool[,] moves)
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 14; i++)
         {
-            for (int j = 0; j < 8; j++)
+            for (int j = 0; j < 20; j++)
             {
                 if (moves[i, j])
                 {
