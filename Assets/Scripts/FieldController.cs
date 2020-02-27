@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FieldController : MonoBehaviour
 {
-    private enum FieldState { Normal, Start, Wall, EventCard1, EventCard2}
+    public enum FieldState { Normal, Start, Wall, EventCard1, EventCard2}
 
     [SerializeField] private FieldState _fieldState = FieldState.Normal;
 

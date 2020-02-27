@@ -31,7 +31,7 @@ public class Rouge : Player
         }
 
         //Right
-        if (CurrentX +_number < 14 && CurrentY+_number < 20)
+        if (CurrentX +_number < 14)
         {
             for (int i = 1; i < _number + 1; i++)
             {

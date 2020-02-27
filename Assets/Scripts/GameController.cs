@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController Instance { get; set; }
-    private bool[,] allowedMoves { set; get; }
-
-    private Player selectedPlayer;
     public Player[,] Players { set; get; }
+    public static GameController Instance { get; set; }
 
-    private const float tileSize = 1f;
-    private const float tileOffset = 0.5f;
-    private int selectionX = -1;
-    private int selectionY = -1;
+    private FieldController _field;
+    private bool[,] _allowedMoves { set; get; }
+    private Player _selectedPlayer;
+    private const float _tileSize = 1f;
+    private const float _tileOffset = 0.5f;
+    private int _selectionX = -1;
+    private int _selectionY = -1;
     [SerializeField]
-    private List<GameObject> playerPrefabs;
+    private List<GameObject> _playerPrefabs;
 
     private void Start()
     {
         Instance = this;
-        SpawnPlayer(0,7,0);
+        SpawnPlayer();
+
     }
 
     private void Update()
@@ -30,15 +31,15 @@ public class GameController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (selectionX >= 0 && selectionY >= 0)
+            if (_selectionX >= 0 && _selectionY >= 0)
             {
-                if (selectedPlayer == null)
+                if (_selectedPlayer == null)
                 {
-                    SelectPlayer(selectionX, selectionY);
+                    SelectPlayer(_selectionX, _selectionY);
                 }
                 else
                 {
-                    MovePlayer(selectionX, selectionY);
+                    MovePlayer(_selectionX, _selectionY);
                 }
             }
         }
@@ -49,23 +50,23 @@ public class GameController : MonoBehaviour
         if (Players[x, y] == null)
             return;
 
-        allowedMoves = Players[x, y].PossibleMove();
-        selectedPlayer = Players[x, y];
-        MoveController.Instance.HighLightAllowedMoves(allowedMoves);
+        _allowedMoves = Players[x, y].PossibleMove();
+        _selectedPlayer = Players[x, y];
+        MoveController.Instance.HighLightAllowedMoves(_allowedMoves);
     }
 
     private void MovePlayer(int x, int y)
     {
-        if (allowedMoves[x,y])
+        if (_allowedMoves[x,y])
         {
-            Players [selectedPlayer.CurrentX, selectedPlayer.CurrentY] = null;
-            selectedPlayer.transform.position = GetTileCenter(x, y);
-            selectedPlayer.SetPosition(x, y);
-            Players[x, y] = selectedPlayer;
+            Players [_selectedPlayer.CurrentX, _selectedPlayer.CurrentY] = null;
+            _selectedPlayer.transform.position = GetTileCenter(x, y);
+            _selectedPlayer.SetPosition(x, y);
+            Players[x, y] = _selectedPlayer;
         }
 
         MoveController.Instance.HideHighlights();
-        selectedPlayer = null;
+        _selectedPlayer = null;
     }
 
     private void UpdateSelection()
@@ -76,31 +77,37 @@ public class GameController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 50.0f,LayerMask.GetMask("BoardPlane")))
         {
-            selectionX = (int)hit.point.x;
-            selectionY = (int)hit.point.z;
+            _selectionX = (int)hit.point.x;
+            _selectionY = (int)hit.point.z;
         }
         else
         {
-            selectionX = -1;
-            selectionY = -1;
+            _selectionX = -1;
+            _selectionY = -1;
         }
     }
 
-    private void SpawnPlayer(int index,int x,int y)
+    private void InstancePlayer(int index,int x,int y)
     {
-        Players = new Player[14, 20];
-        GameObject go = Instantiate(playerPrefabs [index], GetTileCenter(x,y), Quaternion.identity);
+        GameObject go = Instantiate(_playerPrefabs [index], GetTileCenter(x,y), Quaternion.identity);
         go.transform.SetParent(transform);
         Players[x, y] = go.GetComponent<Player>();
         Players[x, y].SetPosition(x, y);
         
     }
 
+    private void SpawnPlayer()
+    {
+        Players = new Player[14, 20];
+        InstancePlayer(0, Random.Range(6, 9), 0);
+        InstancePlayer(1, Random.Range(6, 9),19);
+    }
+
     private Vector3 GetTileCenter(int x, int y)
     {
         Vector3 origin = Vector3.zero;
-        origin.x += (tileSize * x) + tileOffset;
-        origin.z += (tileSize * y) + tileOffset;
+        origin.x += (_tileSize * x) + _tileOffset;
+        origin.z += (_tileSize * y) + _tileOffset;
         return origin;
     }
 
@@ -121,15 +128,15 @@ public class GameController : MonoBehaviour
 
         }
         //Draw Selection
-        if(selectionX >= 0 && selectionY >= 0)
+        if(_selectionX >= 0 && _selectionY >= 0)
         {
             Debug.DrawLine(
-                Vector3.forward * selectionY + Vector3.right * selectionX,
-                Vector3.forward * (selectionY + 1) + Vector3.right * (selectionX + 1));
+                Vector3.forward * _selectionY + Vector3.right * _selectionX,
+                Vector3.forward * (_selectionY + 1) + Vector3.right * (_selectionX + 1));
 
             Debug.DrawLine(
-                Vector3.forward * (selectionY+1) + Vector3.right * selectionX,
-                Vector3.forward * selectionY + Vector3.right * (selectionX + 1));
+                Vector3.forward * (_selectionY+1) + Vector3.right * _selectionX,
+                Vector3.forward * _selectionY + Vector3.right * (_selectionX + 1));
         }
     }
 
