@@ -19,6 +19,9 @@ public class TurnController : MonoBehaviour {
     private float _maxTimer = 30f;
     private float _currentTimer;
 
+    [SerializeField]
+    private Button _diceButton;
+
     private void Start() {
         _roundText = transform.Find("Round").GetComponent<Text>();
         _turnText = transform.Find("Turn").GetComponent<Text>();
@@ -47,6 +50,8 @@ public class TurnController : MonoBehaviour {
         TurnUpdate();
         RoundUpdate();
         TimerUpdate();
+        _diceButton.GetComponentInChildren<Text>().text = "Dice";
+        _diceButton.interactable = true;
     }
     private void TurnUpdate() {
         _turn++;
