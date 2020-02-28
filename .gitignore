@@ -6,3 +6,6 @@ Temp/
 *.sln
 *.csproj
 *.user
+obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+
+*.cache
