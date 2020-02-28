@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class FieldController : MonoBehaviour
 {
-    public enum FieldState { Normal, Start, Wall, EventCard1, EventCard2}
+    public enum FieldState { Normal, Start, EventCard1, EventCard2}
 
-    [SerializeField] private FieldState _fieldState = FieldState.Normal;
+    [SerializeField] public FieldState _fieldState = FieldState.Normal;
 
     void Start()
     {
@@ -14,13 +14,10 @@ public class FieldController : MonoBehaviour
 
         switch (_fieldState) {
             case FieldState.Normal:
-                Material.color = Color.white;
-                break;
-            case FieldState.Start:
                 Material.color = Color.gray;
                 break;
-            case FieldState.Wall:
-                Material.color = Color.black;
+            case FieldState.Start:
+                Material.color = Color.blue;
                 break;
             case FieldState.EventCard1:
                 Material.color = Color.red;

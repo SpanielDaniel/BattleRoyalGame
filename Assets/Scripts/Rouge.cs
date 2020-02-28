@@ -4,8 +4,26 @@ using UnityEngine;
 
 public class Rouge : Player
 {
+    public string _name { get; private set; }
     private int _number;
+    private int _hp;
+    private int _maxHp;
+    private int _ap;
+    private int _dp;
 
+    public Rouge(int MaxHP,int Ap,int Dp, string Name) 
+    {
+        _maxHp = MaxHP;
+        _hp = MaxHP;
+        _ap = Ap;
+        _dp = Dp;
+        _name = Name;
+    }
+
+    public void Attack(Rouge player)
+    {
+        player._hp--;
+    }
 
     public override bool[,] PossibleMove()
     {
@@ -21,7 +39,7 @@ public class Rouge : Player
             {
                 if ((i + 1 * _number % 2) % 2 == 0)
                 {
-                    c = GameController.Instance.Players[CurrentX - i, CurrentY];
+                    c = BoardController.Instance.Players[CurrentX - i, CurrentY];
                     if (c == null)
                     {
                         r[CurrentX - i, CurrentY] = true;
@@ -37,7 +55,7 @@ public class Rouge : Player
             {
                 if ((i + 1 * _number % 2) % 2 == 0)
                 {
-                    c = GameController.Instance.Players[CurrentX +i, CurrentY ];
+                    c = BoardController.Instance.Players[CurrentX +i, CurrentY ];
                     if (c == null)
                     {
                         r[CurrentX + i, CurrentY] = true;
@@ -54,7 +72,7 @@ public class Rouge : Player
             {
                 if ((i+1*_number%2)%2==0)
                 {
-                    c = GameController.Instance.Players[CurrentX, CurrentY + i];
+                    c = BoardController.Instance.Players[CurrentX, CurrentY + i];
                     if (c == null)
                         r[CurrentX, CurrentY + i] = true;
                 }
@@ -68,7 +86,7 @@ public class Rouge : Player
             {
                 if ((i + 1 * _number % 2) % 2 == 0)
                 {
-                    c = GameController.Instance.Players[CurrentX, CurrentY - i];
+                    c = BoardController.Instance.Players[CurrentX, CurrentY - i];
                     if (c == null)
                         r[CurrentX, CurrentY - i] = true;
                 }

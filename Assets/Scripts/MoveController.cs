@@ -39,7 +39,7 @@ public class MoveController : MonoBehaviour
                 {
                     GameObject go = GetHightlightObject();
                     go.SetActive(true);
-                    go.transform.position = new Vector3(i+0.5f, 0, j+0.5f);
+                    go.transform.position = new Vector3(i+0.5f, 0.5f, j+0.5f);
                 }
             }
         }
