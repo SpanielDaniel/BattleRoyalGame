@@ -138,12 +138,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a20dcfd092dbdb4b88afb201d85c3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
+  _turnController: {fileID: 0}
   _playerPrefabs:
   - {fileID: 4445117504345084074, guid: 32c013636526af6478e59ba48b3e88e7, type: 3}
   - {fileID: 4092249470534273405, guid: f1e9fb0125a8486418a400796082f3dc, type: 3}
   _fieldPrefabs:
   - {fileID: 1404031097142520975, guid: 1ec27a027fc83e74095d2d8d0cd943cd, type: 3}
   - {fileID: 3085667022078196175, guid: 64c839d7bebac454b981c1454df2c58f, type: 3}
+  - {fileID: 2684694429880800794, guid: 91540905faf20774c9bb9efc354b42a7, type: 3}
+  - {fileID: 1367862564553234396, guid: 94fb61ca8eed7e148bc499d7c7cd4fcf, type: 3}
 --- !u!114 &1175388462436672079
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,13 +17,13 @@ public class FieldController : MonoBehaviour
                 Material.color = Color.gray;
                 break;
             case FieldState.Start:
-                Material.color = Color.blue;
+                Material.color = Color.green;
                 break;
             case FieldState.EventCard1:
-                Material.color = Color.red;
+                Material.color = Color.blue;
                 break;
             case FieldState.EventCard2:
-                Material.color = Color.green;
+                Material.color = Color.red;
                 break;
             default:
                 Material.color = Color.white;

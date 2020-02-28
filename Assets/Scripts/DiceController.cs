@@ -11,7 +11,7 @@ public class DiceController : MonoBehaviour
 
     public bool DiceActive = true;
 
-    public static int Number { get; private set; }
+    public static int Number { get; set; }
 
     public void UseDice()
     {

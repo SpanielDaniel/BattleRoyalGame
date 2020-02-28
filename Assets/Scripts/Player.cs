@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
+    public bool IsPlayer1;
     public int CurrentX { set; get; }
     public int CurrentY { set; get; }
 

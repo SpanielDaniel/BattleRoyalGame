@@ -18,6 +18,7 @@ public class BoardController : MonoBehaviour
     private const float _tileOffset = 0.5f;
     private int _selectionX = -1;
     private int _selectionY = -1;
+    private bool _isPlayer1Turn;
     [SerializeField]
     private TurnController _turnController;
     [SerializeField]
@@ -58,7 +59,8 @@ public class BoardController : MonoBehaviour
     {
         if (Players[x, y] == null)
             return;
-
+        if (Players[x, y].IsPlayer1 != _isPlayer1Turn)
+            return;
         _allowedMoves = Players[x, y].PossibleMove();
         _selectedPlayer = Players[x, y];
         MoveController.Instance.HighLightAllowedMoves(_allowedMoves);
@@ -72,6 +74,8 @@ public class BoardController : MonoBehaviour
             _selectedPlayer.transform.position = GetTileCenter(x, y,0);
             _selectedPlayer.SetPosition(x, y);
             Players[x, y] = _selectedPlayer;
+            _isPlayer1Turn = !_isPlayer1Turn;
+            DiceController.Number = 0;
         }
 
         MoveController.Instance.HideHighlights();
@@ -108,9 +112,9 @@ public class BoardController : MonoBehaviour
     private void SpawnPlayer()
     {
         Players = new Player[14, 20];
-        InstancePlayer(0, Random.Range(6, 9), 0);
+        InstancePlayer(0, Random.Range(6, 9), 19);
         Player1 = _playerPrefabs[0];
-        InstancePlayer(1, Random.Range(6, 9),19);
+        InstancePlayer(1, Random.Range(6, 9),0);
         Player2 = _playerPrefabs[1];
         
     }
@@ -125,6 +129,7 @@ public class BoardController : MonoBehaviour
 
     private void SpawnField()
     {
+        //normal Fields
         _field = new FieldController[14, 20];
         for (int i = 0; i < 14; i++)
         {
@@ -133,12 +138,33 @@ public class BoardController : MonoBehaviour
                 InstanceField(0, i, j,-0.3f);
             }
         }
+       
+        //start fields
         for (int h = 6; h < 10 ; h++)
         {
             InstanceField(1, h, 0,-0.2f);
             InstanceField(1, h, 19,-0.2f);
 
         }
+
+        //blue Team Event Cards
+
+        InstanceField(2, 7, 1, -0.1f);
+        InstanceField(2, 10, 3, -0.1f);
+        InstanceField(2, 1, 3, -0.1f);
+        InstanceField(2, 6, 6, -0.1f);
+        InstanceField(2, 3, 7, -0.1f);
+        InstanceField(2, 12, 5, -0.1f);
+        InstanceField(2, 0, 1, -0.1f);
+
+        //red Team Event Cards
+        InstanceField(3, 7, 18, -0.1f);
+        InstanceField(3, 10, 16, -0.1f);
+        InstanceField(3, 1, 16, -0.1f);
+        InstanceField(3, 6, 13, -0.1f);
+        InstanceField(3, 3, 12, -0.1f);
+        InstanceField(3, 12, 14, -0.1f);
+        InstanceField(3, 0, 18, -0.1f);
 
     }
 
