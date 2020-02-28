@@ -6,16 +6,20 @@ public class BoardController : MonoBehaviour
 {
     public Player[,] Players { set; get; }
     public static BoardController Instance { get; set; }
+    public GameObject Player1;
+    public GameObject Player2;
 
+    private bool[,] _allowedMoves { set; get; }
     private GameObject[,] fields;
     private FieldController _stateField;
     private FieldController[,] _field;
-    private bool[,] _allowedMoves { set; get; }
     private Player _selectedPlayer;
     private const float _tileSize = 1f;
     private const float _tileOffset = 0.5f;
     private int _selectionX = -1;
     private int _selectionY = -1;
+    [SerializeField]
+    private TurnController _turnController;
     [SerializeField]
     private List<GameObject> _playerPrefabs;
     [SerializeField]
@@ -44,6 +48,7 @@ public class BoardController : MonoBehaviour
                 else
                 {
                     MovePlayer(_selectionX, _selectionY);
+                    _turnController.EndTurn();
                 }
             }
         }
@@ -104,7 +109,10 @@ public class BoardController : MonoBehaviour
     {
         Players = new Player[14, 20];
         InstancePlayer(0, Random.Range(6, 9), 0);
+        Player1 = _playerPrefabs[0];
         InstancePlayer(1, Random.Range(6, 9),19);
+        Player2 = _playerPrefabs[1];
+        
     }
 
     private void InstanceField(int index,int x, int y, float z)

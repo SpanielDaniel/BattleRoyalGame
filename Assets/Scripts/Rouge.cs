@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Rouge : Player
 {
-    public string _name { get; private set; }
+    public string _name;
     private int _number;
     private int _hp;
-    private int _maxHp;
-    private int _ap;
-    private int _dp;
+    private int _maxHp=7;
+    private int _ap=4;
+    private int _dp=3;
 
     public Rouge(int MaxHP,int Ap,int Dp, string Name) 
     {
