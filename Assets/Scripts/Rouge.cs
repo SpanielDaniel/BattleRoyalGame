@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Code by Daniel Pobijanski
 
 public class Rouge : Player
 {
     public string _name;
     private int _number;
     private int _hp;
-    private int _maxHp=7;
+    private int _maxHp;
     private int _ap=4;
     private int _dp=3;
 
@@ -20,17 +21,18 @@ public class Rouge : Player
         _name = Name;
     }
 
-    public void Attack(Rouge player)
+    public void Attack(Player player)
     {
-        player._hp--;
+        
     }
+
 
     public override bool[,] PossibleMove()
     {
         _number = DiceController.Number;
 
-        bool[,] r = new bool[14, 20];
-        Player c;
+        bool[,] _currentPlayer = new bool[14, 20];
+        Player _enemyPlayer;
 
         //Left
         if(CurrentX-_number > 0)
@@ -39,10 +41,10 @@ public class Rouge : Player
             {
                 if ((i + 1 * _number % 2) % 2 == 0)
                 {
-                    c = BoardController.Instance.Players[CurrentX - i, CurrentY];
-                    if (c == null)
+                    _enemyPlayer = BoardController.Instance.Players[CurrentX - i, CurrentY];
+                    if (_enemyPlayer == null)
                     {
-                        r[CurrentX - i, CurrentY] = true;
+                        _currentPlayer[CurrentX - i, CurrentY] = true;
                     }
                 }
             }
@@ -55,10 +57,10 @@ public class Rouge : Player
             {
                 if ((i + 1 * _number % 2) % 2 == 0)
                 {
-                    c = BoardController.Instance.Players[CurrentX +i, CurrentY ];
-                    if (c == null)
+                    _enemyPlayer = BoardController.Instance.Players[CurrentX +i, CurrentY ];
+                    if (_enemyPlayer == null)
                     {
-                        r[CurrentX + i, CurrentY] = true;
+                        _currentPlayer[CurrentX + i, CurrentY] = true;
                     }
                 }
             }
@@ -72,27 +74,27 @@ public class Rouge : Player
             {
                 if ((i+1*_number%2)%2==0)
                 {
-                    c = BoardController.Instance.Players[CurrentX, CurrentY + i];
-                    if (c == null)
-                        r[CurrentX, CurrentY + i] = true;
+                    _enemyPlayer = BoardController.Instance.Players[CurrentX, CurrentY + i];
+                    if (_enemyPlayer == null)
+                        _currentPlayer[CurrentX, CurrentY + i] = true;
                 }
             }
         }
 
         //Down
-        if (CurrentY != 0)
+        if (CurrentY - _number > 0)
         {
             for (int i = 1; i < _number + 1; i++)
             {
                 if ((i + 1 * _number % 2) % 2 == 0)
                 {
-                    c = BoardController.Instance.Players[CurrentX, CurrentY - i];
-                    if (c == null)
-                        r[CurrentX, CurrentY - i] = true;
+                    _enemyPlayer = BoardController.Instance.Players[CurrentX, CurrentY - i];
+                    if (_enemyPlayer == null)
+                        _currentPlayer[CurrentX, CurrentY - i] = true;
                 }
             }
         }
 
-        return r;
+        return _currentPlayer;
     }
 }

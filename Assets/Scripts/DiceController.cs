@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//Code by Daniel Pobijanski
 
 public class DiceController : MonoBehaviour
 {

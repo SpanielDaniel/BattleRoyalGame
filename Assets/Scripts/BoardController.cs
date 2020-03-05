@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Code by Daniel Pobijanski
 
 public class BoardController : MonoBehaviour
 {
@@ -10,10 +11,9 @@ public class BoardController : MonoBehaviour
     public GameObject Player2;
 
     private bool[,] _allowedMoves { set; get; }
-    private GameObject[,] fields;
-    private FieldController _stateField;
     private FieldController[,] _field;
     private Player _selectedPlayer;
+    private Player _enemyPlayer;
     private const float _tileSize = 1f;
     private const float _tileOffset = 0.5f;
     private int _selectionX = -1;
@@ -49,7 +49,6 @@ public class BoardController : MonoBehaviour
                 else
                 {
                     MovePlayer(_selectionX, _selectionY);
-                    _turnController.EndTurn();
                 }
             }
         }
@@ -76,10 +75,33 @@ public class BoardController : MonoBehaviour
             Players[x, y] = _selectedPlayer;
             _isPlayer1Turn = !_isPlayer1Turn;
             DiceController.Number = 0;
+            CheckSurrounding(x,y);
+            _turnController.EndTurn();
         }
 
         MoveController.Instance.HideHighlights();
         _selectedPlayer = null;
+    }
+
+    private void CheckSurrounding(int x, int y)
+    {
+        _enemyPlayer = Instance.Players[x, y];
+        if (_enemyPlayer != null && Players[x+1,y])
+        {
+            _turnController.Fight();
+        }
+        if (_enemyPlayer != null && Players[x - 1, y])
+        {
+            _turnController.Fight();
+        }
+        if (_enemyPlayer != null && Players[x, y+1])
+        {
+            _turnController.Fight();
+        }
+        if (_enemyPlayer != null && Players[x, y-1])
+        {
+            _turnController.Fight();
+        }
     }
 
     private void UpdateSelection()

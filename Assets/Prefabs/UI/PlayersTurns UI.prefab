@@ -1951,11 +1951,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f4b76cda805df44bbcfac2b21dd05c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _board: {fileID: 0}
+  _board: {fileID: 1175388462436672114, guid: 4e02f53afad86d54fa188d785527a392, type: 3}
   _fightEndButton: {fileID: 6867746437033670616}
   _diceButtonPlayer1: {fileID: 975359607753161346}
   _diceButtonPlayer2: {fileID: 2565277784760328513}
-  _diceButton: {fileID: 0}
+  _diceButton: {fileID: 2112616766034988599, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
+    type: 3}
 --- !u!1 &8505477022923912427
 GameObject:
   m_ObjectHideFlags: 0

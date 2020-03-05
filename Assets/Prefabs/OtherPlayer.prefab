@@ -106,3 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27373d9ff7379a4d86b3dc969993f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _turnController: {fileID: 675491454824845909, guid: 8a192e417695e9d46a0d068d9c9d3eb0,
+    type: 3}
+  IsPlayer1: 0
+  _name: 

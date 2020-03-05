@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Code by Daniel Pobijanski
 
 public class MoveController : MonoBehaviour
 {
