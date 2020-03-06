@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ChooseClasses : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ChooseClasses : MonoBehaviour
     public enum _Classes { Rouge, Fighter, Tank };
     public static _Classes Classes1;
     public static _Classes Classes2;
+    [SerializeField] private Text _playerText;
     private void Update()
     {
         if (_allPicked)
@@ -24,6 +26,7 @@ public class ChooseClasses : MonoBehaviour
         {
             Classes1 = _Classes.Tank;
             _firstPick = false;
+            _playerText.text = "Player2";
         }
         else
         {
@@ -38,6 +41,7 @@ public class ChooseClasses : MonoBehaviour
         {
             Classes1 = _Classes.Fighter;
             _firstPick = false;
+            _playerText.text = "Player2";
         }
         else
         {
@@ -52,6 +56,7 @@ public class ChooseClasses : MonoBehaviour
         {
             Classes1 = _Classes.Rouge;
             _firstPick = false;
+            _playerText.text = "Player2";
         }
         else
         {

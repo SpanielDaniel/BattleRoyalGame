@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 1063870417066593540}
   - component: {fileID: 1832829124690077028}
   - component: {fileID: 6696874263749918750}
+  - component: {fileID: 39887100340771195}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -154,6 +155,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: X
+--- !u!114 &39887100340771195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291994024342970310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1935244669896859301
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +181,7 @@ GameObject:
   - component: {fileID: 1113651336785820983}
   - component: {fileID: 5524983289870311041}
   - component: {fileID: 2465570408269352461}
+  - component: {fileID: 8429741946987981105}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -212,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -231,6 +248,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Cards: 0'
+--- !u!114 &8429741946987981105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1935244669896859301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3021002146587844206
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,8 +328,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 364b32b8ac059d34c9e20c2868bc5a45, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -425,8 +457,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 364b32b8ac059d34c9e20c2868bc5a45, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -607,7 +639,6 @@ MonoBehaviour:
   _eventCards: {fileID: 4818629281910315806}
   _closeButton: {fileID: 3172984666730771864}
   _openButton: {fileID: 3021002146587844206}
-  _eventCardsField: {fileID: 4818629281910315806}
   _shield: {fileID: 21300000, guid: 8c51546db64120144b818171aa560c9f, type: 3}
   _storm: {fileID: 21300000, guid: a9cab80f7df92c34b9d9662feee53501, type: 3}
   _sword: {fileID: 21300000, guid: ca446d5ae4098ac46ae1ae793e8eaa44, type: 3}
