@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Code by Daniel Pobijanski
 public class Tank : Player
 {
+    private TurnController _turnController;
     public Tank(int ap, int dp, int hp, int speed)
     {
         dp = 2;
@@ -13,6 +14,20 @@ public class Tank : Player
         speed = Speed;
     }
     private int _diceNumber;
+    public override void Attack(Player player)
+    {
+        if (player.Hp > 0)
+        {
+            if (Dmg > player.Ver)
+            {
+                player.Hp--;
+            }
+            if (Dmg <= player.Ver)
+            {
+                Debug.Log("Blocked");
+            }
+        }
+    }
     public override bool[,] PossibleMove()
     {
         _diceNumber = DiceController.Number;

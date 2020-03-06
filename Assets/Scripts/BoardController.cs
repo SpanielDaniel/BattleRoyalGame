@@ -9,6 +9,7 @@ public class BoardController : MonoBehaviour
     public static BoardController Instance { get; set; }
     public GameObject Player1;
     public GameObject Player2;
+    public static bool _isPlayer1Turn;
 
     private bool[,] _allowedMoves { set; get; }
     private FieldController[,] _field;
@@ -18,7 +19,6 @@ public class BoardController : MonoBehaviour
     private const float _tileOffset = 0.5f;
     private int _selectionX = -1;
     private int _selectionY = -1;
-    private bool _isPlayer1Turn;
     [SerializeField]
     private TurnController _turnController;
     [SerializeField]

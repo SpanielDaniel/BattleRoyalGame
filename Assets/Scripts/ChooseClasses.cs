@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+//Code by Daniel Pobijanski
 
 public class ChooseClasses : MonoBehaviour
 {

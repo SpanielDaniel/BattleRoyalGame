@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Code by Daniel Pobijanski
 
 public class Figther : Player
 {
+    private TurnController _turnController;
     public Figther(int ap, int dp, int hp, int speed)
     {
         ap = 2;
@@ -13,6 +15,20 @@ public class Figther : Player
         speed = Speed;
     }
 
+    public override void Attack(Player player)
+    {
+        if (player.Hp > 0)
+        {
+            if (Dmg > player.Ver)
+            {
+                player.Hp--;
+            }
+            if (Dmg <= player.Ver)
+            {
+                Debug.Log("Blocked");
+            }
+        }
+    }
     private int _diceNumber;
     public override bool[,] PossibleMove()
     {

@@ -7,6 +7,12 @@ public class Rouge : Player
 {
     public string _name;
     private int _number;
+    private TurnController _turnController;
+
+    private void Start()
+    {
+        _turnController = GetComponent<TurnController>();
+    }
 
     public Rouge(int hp, int ap, int dp, string Name) 
     {
@@ -17,13 +23,16 @@ public class Rouge : Player
 
     public override void Attack(Player player)
     {
-        if (Dmg > player.Ver)
+        if (player.Hp > 0)
         {
-            player.Hp--;
-        }
-        if (Dmg <= player.Ver)
-        {
-            Debug.Log("Blocked");
+            if (Dmg > player.Ver)
+            {
+                player.Hp--;
+            }
+            if (Dmg <= player.Ver)
+            {
+                Debug.Log("Blocked");
+            }
         }
     }
 
