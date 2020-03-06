@@ -85,22 +85,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-726355353697253914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4092249470534273405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e27373d9ff7379a4d86b3dc969993f1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _turnController: {fileID: 675491454824845909, guid: 8a192e417695e9d46a0d068d9c9d3eb0,
-    type: 3}
-  IsPlayer1: 0
-  _name: 
 --- !u!1001 &779807265704784861
 PrefabInstance:
   m_ObjectHideFlags: 0
