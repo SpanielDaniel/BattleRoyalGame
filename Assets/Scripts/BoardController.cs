@@ -12,6 +12,8 @@ public class BoardController : MonoBehaviour
     public static bool _isPlayer1Turn;
 
     private bool[,] _allowedMoves { set; get; }
+    public static GameObject _objectPlayer2;
+    public static GameObject _objectPlayer;
     private FieldController[,] _field;
     private Player _selectedPlayer;
     private Player _enemyPlayer;
@@ -96,22 +98,30 @@ public class BoardController : MonoBehaviour
     private void CheckSurrounding(int x, int y)
     {
         _enemyPlayer = Instance.Players[x, y];
-        if (_enemyPlayer != null && Players[x+1,y])
+        if (_enemyPlayer != null && Players[x + 1, y])
         {
             _turnController.Fight();
         }
+        else
+            return;
         if (_enemyPlayer != null && Players[x - 1, y])
         {
             _turnController.Fight();
         }
+        else
+            return;
         if (_enemyPlayer != null && Players[x, y+1])
         {
             _turnController.Fight();
         }
+        else
+            return;
         if (_enemyPlayer != null && Players[x, y-1])
         {
             _turnController.Fight();
         }
+        else
+            return;
     }
 
     private void UpdateSelection()
@@ -134,41 +144,41 @@ public class BoardController : MonoBehaviour
 
     private void InstancePlayer1(int index,int x,int y)
     {
-        GameObject go = Instantiate(_playerPrefabs [index], GetTileCenter(x,y,0), Quaternion.identity);
+        _objectPlayer = Instantiate(_playerPrefabs [index], GetTileCenter(x,y,0), Quaternion.identity);
         if (ChooseClasses.Classes1 == ChooseClasses._Classes.Fighter)
         {
-            go.AddComponent<Figther>();
+            _objectPlayer.AddComponent<Figther>();
         }
         if (ChooseClasses.Classes1 == ChooseClasses._Classes.Rouge)
         {
-            go.AddComponent<Rouge>();
+            _objectPlayer.AddComponent<Rouge>();
         }
         if (ChooseClasses.Classes1 == ChooseClasses._Classes.Tank)
         {
-            go.AddComponent<Tank>();
+            _objectPlayer.AddComponent<Tank>();
         }
-        go.transform.SetParent(transform);
-        Players[x, y] = go.GetComponent<Player>();
+        _objectPlayer.transform.SetParent(transform);
+        Players[x, y] = _objectPlayer.GetComponent<Player>();
         Players[x, y].SetPosition(x, y);
         Players[x, y].IsPlayer1 = true;
     }
     private void InstancePlayer2(int index, int x, int y)
     {
-        GameObject go = Instantiate(_playerPrefabs[index], GetTileCenter(x, y, 0), Quaternion.identity);
+        _objectPlayer2 = Instantiate(_playerPrefabs[index], GetTileCenter(x, y, 0), Quaternion.identity);
         if (ChooseClasses.Classes2 == ChooseClasses._Classes.Fighter)
         {
-            go.AddComponent<Figther>();
+            _objectPlayer2.AddComponent<Figther>();
         }
         if (ChooseClasses.Classes2 == ChooseClasses._Classes.Rouge)
         {
-            go.AddComponent<Rouge>();
+            _objectPlayer2.AddComponent<Rouge>();
         }
         if (ChooseClasses.Classes2 == ChooseClasses._Classes.Tank)
         {
-            go.AddComponent<Tank>();
+            _objectPlayer2.AddComponent<Tank>();
         }
-        go.transform.SetParent(transform);
-        Players[x, y] = go.GetComponent<Player>();
+        _objectPlayer2.transform.SetParent(transform);
+        Players[x, y] = _objectPlayer2.GetComponent<Player>();
         Players[x, y].SetPosition(x, y);
     }
 

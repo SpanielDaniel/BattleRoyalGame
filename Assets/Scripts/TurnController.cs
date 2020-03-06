@@ -31,6 +31,8 @@ public class TurnController : MonoBehaviour {
     private float _maxTimer = 30f;
     private float _currentTimer;
 
+    private bool isPlayer1dead = false;
+    private bool isPlayer2dead = false;
     private bool isFight = false;
 
     [SerializeField]
@@ -58,6 +60,16 @@ public class TurnController : MonoBehaviour {
     }
     private void Update()
     {
+        if (BoardController._objectPlayer == null)
+        {
+            isPlayer1dead = true;
+            WinLose();
+        }
+        if (BoardController._objectPlayer2 == null)
+        {
+            isPlayer2dead = true;
+            WinLose();
+        }
         if (!isFight) 
         {
             if (_currentTimer > 0) 
@@ -83,6 +95,7 @@ public class TurnController : MonoBehaviour {
         TimerUpdate();
         _diceButton.GetComponentInChildren<Text>().text = "Dice";
         _diceButton.interactable = true;
+        
     }
     private void TurnUpdate()
     {
@@ -148,6 +161,7 @@ public class TurnController : MonoBehaviour {
         }
         Player.winPlayerNickname = _winPlayerNickname;
 
+
         SceneManager.LoadScene("Win");
         //isFight = false;
         //_roundText.text = "Round: " + _round;
@@ -158,5 +172,26 @@ public class TurnController : MonoBehaviour {
         //_endTurnObject.SetActive(true);
         //_board.SetActive(true);
         //_diceButton.transform.gameObject.SetActive(true);
+    }
+
+    private void WinLose(){
+        if (isPlayer1dead)
+        {
+            Player.winPlayerNickname = "Player1";
+
+            SceneManager.LoadScene("Win");
+        }
+        if (isPlayer2dead)
+        {
+            Player.winPlayerNickname = "Player2";
+
+            SceneManager.LoadScene("Win");
+        }
+        if (isPlayer1dead && isPlayer2dead)
+        {
+            Player.winPlayerNickname = "Nobody";
+
+            SceneManager.LoadScene("Win");
+        }
     }
 }
