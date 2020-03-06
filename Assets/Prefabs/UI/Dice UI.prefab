@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2457501558050804642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148368177542658325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 2, y: -2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &8087935465960004789
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,11 +246,37 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1997277326633732344, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 364b32b8ac059d34c9e20c2868bc5a45,
+        type: 3}
+    - target: {fileID: 1997277326633732344, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2112616766034988599, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 7674160045695034048}
+    - target: {fileID: 7597341020053620562, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597341020053620562, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7597341020053620562, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6, type: 3}
 --- !u!224 &2939578897826702594 stripped
@@ -256,3 +297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6148368177542658325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8523348122132130967, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2529448204015195522}
+  m_PrefabAsset: {fileID: 0}
