@@ -25,9 +25,10 @@ public class BoardController : MonoBehaviour
     private List<GameObject> _playerPrefabs;
     [SerializeField]
     private List<GameObject> _fieldPrefabs;
+    private int _currentTurn = 1;
+    private int _destroyRound = 1;
 
-    private void Awake()
-    {
+    private void Awake() {
         SpawnPlayer();
     }
     private void Start()
@@ -54,6 +55,12 @@ public class BoardController : MonoBehaviour
                     MovePlayer(_selectionX, _selectionY);
                 }
             }
+        }
+
+        if ((TurnController.GetTurn() - 1) % 4 == 0 && TurnController.GetTurn() != _currentTurn && _destroyRound < 9) {
+            _currentTurn = TurnController.GetTurn();
+            DestroyField(_destroyRound);
+            _destroyRound++;
         }
     }
 
@@ -263,5 +270,11 @@ public class BoardController : MonoBehaviour
         }
     }
 
-
+    private void DestroyField(int destroyRound) {
+        foreach (Transform child in transform) {
+            if (child.position.z == destroyRound - 0.5 || child.position.z == 20.5 - destroyRound) {
+                GameObject.Destroy(child.gameObject);
+            }
+        }
+    }
 }

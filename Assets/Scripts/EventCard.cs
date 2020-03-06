@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+//Code by Vitali Kross
 
 public class EventCard : MonoBehaviour {
     public int _id { get; private set; }

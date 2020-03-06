@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+//Code by Vitali Kross
 
 public class FieldController : MonoBehaviour
 {
@@ -20,19 +19,14 @@ public class FieldController : MonoBehaviour
                 Material.color = Color.black;
                 break;
             case FieldState.EventCard1:
-                //Material.color = Color.blue;
+                Material.color = Color.white;
                 break;
             case FieldState.EventCard2:
-                //Material.color = Color.red;
+                Material.color = Color.white;
                 break;
             default:
                 Material.color = Color.white;
                 break;
         }
-    }
-
-    void Update()
-    {
-        
     }
 }

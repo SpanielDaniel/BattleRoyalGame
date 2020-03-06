@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//Code by Vitali Kross
 
 public class EventCardsController : MonoBehaviour
 {
