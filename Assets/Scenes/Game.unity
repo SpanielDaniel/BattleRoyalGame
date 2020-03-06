@@ -397,6 +397,18 @@ PrefabInstance:
       propertyPath: _board
       value: 
       objectReference: {fileID: 1378863649}
+    - target: {fileID: 675491454824845909, guid: 8a192e417695e9d46a0d068d9c9d3eb0,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: -2254131690792582376, guid: 32c013636526af6478e59ba48b3e88e7,
+        type: 3}
+    - target: {fileID: 675491454824845909, guid: 8a192e417695e9d46a0d068d9c9d3eb0,
+        type: 3}
+      propertyPath: _otherPlayer
+      value: 
+      objectReference: {fileID: 5234598240918179248, guid: f1e9fb0125a8486418a400796082f3dc,
+        type: 3}
     - target: {fileID: 8505477022863181146, guid: 8a192e417695e9d46a0d068d9c9d3eb0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -894,6 +906,18 @@ PrefabInstance:
       propertyPath: _turnController
       value: 
       objectReference: {fileID: 438465675}
+    - target: {fileID: 1175388462436672113, guid: 4e02f53afad86d54fa188d785527a392,
+        type: 3}
+      propertyPath: Player1
+      value: 
+      objectReference: {fileID: 4445117504345084074, guid: 32c013636526af6478e59ba48b3e88e7,
+        type: 3}
+    - target: {fileID: 1175388462436672113, guid: 4e02f53afad86d54fa188d785527a392,
+        type: 3}
+      propertyPath: Player2
+      value: 
+      objectReference: {fileID: 4092249470534273405, guid: f1e9fb0125a8486418a400796082f3dc,
+        type: 3}
     - target: {fileID: 1175388462436672114, guid: 4e02f53afad86d54fa188d785527a392,
         type: 3}
       propertyPath: m_Name

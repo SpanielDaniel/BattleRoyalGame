@@ -1,48 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Code by Daniel Pobijanski
 
-public class Rouge : Player
+public class Figther : Player
 {
-    public string _name;
-    private int _number;
-
-    public Rouge(int hp, int ap, int dp, string Name) 
+    public Figther(int ap, int dp, int hp, int speed)
     {
-        hp = Hp;
+        ap = 2;
         ap = Dmg;
         dp = Ver;
+        hp = Hp;
+        speed = Speed;
     }
 
-    public override void Attack(Player player)
-    {
-        if (Dmg > player.Ver)
-        {
-            player.Hp--;
-        }
-        if (Dmg <= player.Ver)
-        {
-            Debug.Log("Blocked");
-        }
-    }
-
-
+    private int _diceNumber;
     public override bool[,] PossibleMove()
     {
-        _number = DiceController.Number;
-        _number += 2;
-        
+        _diceNumber = DiceController.Number;
 
         bool[,] _currentPlayer = new bool[14, 20];
         Player _enemyPlayer;
 
         //Left
-        if(CurrentX-_number > 0)
+        if (CurrentX - _diceNumber > 0)
         {
-            for (int i = 1; i < _number + 1; i++)
+            for (int i = 1; i < _diceNumber + 1; i++)
             {
-                if ((i + 1 * _number % 2) % 2 == 0)
+                if ((i + 1 * _diceNumber % 2) % 2 == 0)
                 {
                     _enemyPlayer = BoardController.Instance.Players[CurrentX - i, CurrentY];
                     if (_enemyPlayer == null)
@@ -54,13 +38,13 @@ public class Rouge : Player
         }
 
         //Right
-        if (CurrentX +_number < 14)
+        if (CurrentX + _diceNumber < 14)
         {
-            for (int i = 1; i < _number + 1; i++)
+            for (int i = 1; i < _diceNumber + 1; i++)
             {
-                if ((i + 1 * _number % 2) % 2 == 0)
+                if ((i + 1 * _diceNumber % 2) % 2 == 0)
                 {
-                    _enemyPlayer = BoardController.Instance.Players[CurrentX +i, CurrentY ];
+                    _enemyPlayer = BoardController.Instance.Players[CurrentX + i, CurrentY];
                     if (_enemyPlayer == null)
                     {
                         _currentPlayer[CurrentX + i, CurrentY] = true;
@@ -68,14 +52,14 @@ public class Rouge : Player
                 }
             }
         }
-        
+
 
         //Up
-        if(CurrentY + _number < 20)
+        if (CurrentY + _diceNumber < 20)
         {
-            for (int i = 1; i < _number+1 ; i++)
+            for (int i = 1; i < _diceNumber + 1; i++)
             {
-                if ((i+1*_number%2)%2==0)
+                if ((i + 1 * _diceNumber % 2) % 2 == 0)
                 {
                     _enemyPlayer = BoardController.Instance.Players[CurrentX, CurrentY + i];
                     if (_enemyPlayer == null)
@@ -85,11 +69,11 @@ public class Rouge : Player
         }
 
         //Down
-        if (CurrentY - _number > 0)
+        if (CurrentY - _diceNumber > 0)
         {
-            for (int i = 1; i < _number + 1; i++)
+            for (int i = 1; i < _diceNumber + 1; i++)
             {
-                if ((i + 1 * _number % 2) % 2 == 0)
+                if ((i + 1 * _diceNumber % 2) % 2 == 0)
                 {
                     _enemyPlayer = BoardController.Instance.Players[CurrentX, CurrentY - i];
                     if (_enemyPlayer == null)

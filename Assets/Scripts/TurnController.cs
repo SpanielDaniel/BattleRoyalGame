@@ -39,7 +39,8 @@ public class TurnController : MonoBehaviour {
 
     private string _winPlayerNickname;
 
-    private void Start() {
+    private void Start()
+    {
         _findObject = transform.Find("Fight").gameObject;
         _endTurnObject = transform.Find("EndTurn").gameObject;
         _fightField = transform.Find("FightField").gameObject;
@@ -56,37 +57,46 @@ public class TurnController : MonoBehaviour {
         _timerText.color = Color.white;
         _currentTimer = _maxTimer;
     }
-    private void Update() {
-        if (!isFight) {
-            if (_currentTimer > 0) {
+    private void Update()
+    {
+        if (!isFight) 
+        {
+            if (_currentTimer > 0) 
+            {
                 _currentTimer -= 1 * Time.deltaTime;
                 _timerText.text = Math.Round(_currentTimer).ToString();
 
-                if (_currentTimer < 5.5) {
+                if (_currentTimer < 5.5)
+                {
                     _timerText.color = Color.red;
                 }
             }
-            else {
+            else
+            {
                 EndTurn();
             }
         }
     }
-    public void EndTurn() {
+    public void EndTurn() 
+    {
         TurnUpdate();
         RoundUpdate();
         TimerUpdate();
         _diceButton.GetComponentInChildren<Text>().text = "Dice";
         _diceButton.interactable = true;
     }
-    private void TurnUpdate() {
+    private void TurnUpdate()
+    {
         _turn++;
         _turnText.text = "Turn: " + ((_turn % 2 == 1) ? _player1Nickname : _player2Nickname);
     }
-    private void RoundUpdate() {
+    private void RoundUpdate()
+    {
         _round = (int)Math.Ceiling((float)_turn / _playersCount);
         _roundText.text = "Round: " + _round;
     }
-    private void TimerUpdate() {
+    private void TimerUpdate()
+    {
         _currentTimer = _maxTimer;
         _timerText.text = _currentTimer.ToString();
         _timerText.color = Color.white;
@@ -115,7 +125,8 @@ public class TurnController : MonoBehaviour {
             _fightEndButton.gameObject.SetActive(true);
         }
     }
-    public void FightUseDice2() {
+    public void FightUseDice2()
+    {
         _dicePlayer2 = UnityEngine.Random.Range(1, 6);
 
         _diceButtonPlayer2.GetComponentInChildren<Text>().text = "Dice: " + _dicePlayer2;
@@ -125,11 +136,15 @@ public class TurnController : MonoBehaviour {
             _fightEndButton.gameObject.SetActive(true);
         }
     }
-    public void FightEnd() {
-        if (_dicePlayer1 != _dicePlayer2) {
+    public void FightEnd()
+    {
+
+        if (_dicePlayer1 != _dicePlayer2)
+        {
             _winPlayerNickname = (_dicePlayer1 > _dicePlayer2) ? _player1Nickname : _player2Nickname; ;
         }
-        else {
+        else
+        {
             _winPlayerNickname = "Nobody";
         }
         Player.winPlayerNickname = _winPlayerNickname;

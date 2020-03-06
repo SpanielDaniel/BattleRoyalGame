@@ -26,10 +26,13 @@ public class BoardController : MonoBehaviour
     [SerializeField]
     private List<GameObject> _fieldPrefabs;
 
+    private void Awake()
+    {
+        SpawnPlayer();
+    }
     private void Start()
     {
         Instance = this;
-        SpawnPlayer();
         SpawnField();
     }
 
@@ -122,22 +125,53 @@ public class BoardController : MonoBehaviour
         }
     }
 
-    private void InstancePlayer(int index,int x,int y)
+    private void InstancePlayer1(int index,int x,int y)
     {
         GameObject go = Instantiate(_playerPrefabs [index], GetTileCenter(x,y,0), Quaternion.identity);
+        if (ChooseClasses.Classes1 == ChooseClasses._Classes.Fighter)
+        {
+            go.AddComponent<Figther>();
+        }
+        if (ChooseClasses.Classes1 == ChooseClasses._Classes.Rouge)
+        {
+            go.AddComponent<Rouge>();
+        }
+        if (ChooseClasses.Classes1 == ChooseClasses._Classes.Tank)
+        {
+            go.AddComponent<Tank>();
+        }
         go.transform.SetParent(transform);
         Players[x, y] = go.GetComponent<Player>();
         Players[x, y].SetPosition(x, y);
-        
+        Players[x, y].IsPlayer1 = true;
+    }
+    private void InstancePlayer2(int index, int x, int y)
+    {
+        GameObject go = Instantiate(_playerPrefabs[index], GetTileCenter(x, y, 0), Quaternion.identity);
+        if (ChooseClasses.Classes2 == ChooseClasses._Classes.Fighter)
+        {
+            go.AddComponent<Figther>();
+        }
+        if (ChooseClasses.Classes2 == ChooseClasses._Classes.Rouge)
+        {
+            go.AddComponent<Rouge>();
+        }
+        if (ChooseClasses.Classes2 == ChooseClasses._Classes.Tank)
+        {
+            go.AddComponent<Tank>();
+        }
+        go.transform.SetParent(transform);
+        Players[x, y] = go.GetComponent<Player>();
+        Players[x, y].SetPosition(x, y);
     }
 
     private void SpawnPlayer()
     {
         Players = new Player[14, 20];
-        InstancePlayer(0, Random.Range(6, 9), 19);
         Player1 = _playerPrefabs[0];
-        InstancePlayer(1, Random.Range(6, 9),0);
+        InstancePlayer1(0, Random.Range(6, 9), 19);
         Player2 = _playerPrefabs[1];
+        InstancePlayer2(1, Random.Range(6, 9),0);
         
     }
 

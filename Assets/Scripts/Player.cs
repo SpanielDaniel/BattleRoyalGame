@@ -5,8 +5,11 @@ using UnityEngine;
 
 public abstract class Player : MonoBehaviour
 {
-    public TurnController _turnController;
     public bool IsPlayer1;
+    public int Dmg { get; set; }
+    public int Ver { get; set; }
+    public int Hp = 7;
+    public int Speed { get; protected set; }
     public int CurrentX { set; get; }
     public int CurrentY { set; get; }
 
@@ -21,5 +24,9 @@ public abstract class Player : MonoBehaviour
     public virtual bool[,] PossibleMove()
     {
         return new bool[14,20];
+    }
+    public virtual void Attack(Player player)
+    {
+
     }
 }
