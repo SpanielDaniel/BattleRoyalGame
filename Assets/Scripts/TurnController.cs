@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class TurnController : MonoBehaviour {
 
-    private int _turn = 1;
+    public static int _turn = 1;
     private int _round;
     private int _playersCount = 2;
     private string _player1Nickname = "Player1";
@@ -92,7 +92,9 @@ public class TurnController : MonoBehaviour {
         _timerText.color = Color.white;
     }
 
-
+    public static int GetTurn() {
+        return _turn;
+    }
     public void Fight() {
         isFight = true;
         _roundText.text = "Fight";

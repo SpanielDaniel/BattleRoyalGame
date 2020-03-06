@@ -1955,6 +1955,8 @@ MonoBehaviour:
   _fightEndButton: {fileID: 6867746437033670616}
   _diceButtonPlayer1: {fileID: 975359607753161346}
   _diceButtonPlayer2: {fileID: 2565277784760328513}
+  _eventCardsController: {fileID: 4641554136499160660, guid: f931dd5cbc30a8a438d7c6a526ada7e3,
+    type: 3}
   _diceButton: {fileID: 2112616766034988599, guid: 0c2c8ea2dc5f1d2418ed396bb43ba6c6,
     type: 3}
 --- !u!1 &8505477022923912427
